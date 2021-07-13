@@ -1,6 +1,6 @@
 {
   "name": "01-gitflow",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "first version",
   "main": "index.js",
   "scripts": {
