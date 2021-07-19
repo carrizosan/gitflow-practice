@@ -1,0 +1,19 @@
+{
+  "name": "modulo-2-node",
+  "version": "1.0.0",
+  "description": "Ejercicios de fundamentos de node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carrizosan/node-fundamentos.git"
+  },
+  "author": "Santiago Carrizo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carrizosan/node-fundamentos/issues"
+  },
+  "homepage": "https://github.com/carrizosan/node-fundamentos#readme"
+}
