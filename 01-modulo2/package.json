@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/carrizosan/node-fundamentos/issues"
   },
-  "homepage": "https://github.com/carrizosan/node-fundamentos#readme"
+  "homepage": "https://github.com/carrizosan/node-fundamentos#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
