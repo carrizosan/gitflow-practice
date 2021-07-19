@@ -1,27 +1,20 @@
-const fileSystem = require("./writeFile");
-const fileName = "tabla5.txt";
-const InvalidfileName = "tabla5";
+const fileSystem = require("./utilities/writeFile");
+const table = require("./utilities/table");
 let result = "";
 
-// Guardo la tabla del 5, del 1 al 10.
-for (let i = 1; i <= 10; i++) {
-  result += `5 x ${i} = ${5 * i} \n`;
-}
+const base = process.argv[2].split("--base=")[1];
+const limit = process.argv[3]?.split("--limit=")[1]; // Segundo parametro Limit opcional.
+
+result = table.createTableByBase(result, base, limit);
+
+console.log(result);
+
+const fileName = `tabla${base}.txt`;
 
 try {
   // Ejecuto promesa para guardar archivo y caputuro posibles errores
   fileSystem
     .writeFile(fileName, result)
-    .then((successMessage) => console.log(`Completed. ${successMessage}`))
-    .catch((reason) => console.log(reason));
-} catch (err) {
-  console.log(err);
-}
-
-try {
-  // Testeo la promesa con un nombre de archivo incorrecto
-  fileSystem
-    .writeFile(InvalidfileName, result)
     .then((successMessage) => console.log(`Completed. ${successMessage}`))
     .catch((reason) => console.log(reason));
 } catch (err) {
