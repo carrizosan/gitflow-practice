@@ -1,10 +1,13 @@
 const fileSystem = require("./utilities/writeFile");
 const table = require("./utilities/table");
-var colors = require("colors");
+const colors = require("colors");
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
+const argv = yargs(hideBin(process.argv)).argv;
 let result = "";
 
-const base = process.argv[2].split("--base=")[1];
-const limit = process.argv[3]?.split("--limit=")[1] || 10; // Segundo parametro Limit opcional.
+const base = argv.base;
+const limit = argv.limit || 10; // Segundo parametro Limit opcional.
 
 result = table.createTableByBase(result, base, limit);
 
