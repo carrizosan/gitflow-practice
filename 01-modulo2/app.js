@@ -8,8 +8,12 @@ const { base, top, list } = argv.argv;
 result = table.createTableByBase(result, base, top);
 
 if (list) {
-  console.log(`TABLA DEL ${base} HASTA EL NUMERO ${top} !!`.rainbow);
-  console.log(result);
+  console.log(
+    "|||||||||| ".red +
+      `TABLA DEL ${base} HASTA EL NUMERO ${top}`.rainbow +
+      " ||||||||||".red
+  );
+  console.log("\n" + result.america.bold);
 }
 
 const fileName = `tabla${base}.txt`;
