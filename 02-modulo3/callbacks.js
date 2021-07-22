@@ -10,10 +10,8 @@ let saboresDeHelado = [
 ];
 
 const mostrarSaboresDeHelado = () => {
-  setTimeout(() => {
-    console.log("\nSabores de Helado:\n");
-    saboresDeHelado.forEach((sabor) => console.log(sabor));
-  }, 1000);
+  console.log("\nSabores de Helado:\n");
+  saboresDeHelado.forEach((sabor) => console.log(sabor));
 };
 
 mostrarSaboresDeHelado();
@@ -21,13 +19,19 @@ mostrarSaboresDeHelado();
 // CON CALLBACKS
 
 const agregarSaborDeHelado = (sabor, callback) => {
-  setTimeout(() => {
-    saboresDeHelado.push(sabor);
-    callback();
-  }, 2000);
+  saboresDeHelado.push(sabor);
+  callback();
 };
 
+// Agregando los 5 elementos con callback
+
+saboresDeHelado = [];
+
 agregarSaborDeHelado("Limon al Agua", mostrarSaboresDeHelado);
+agregarSaborDeHelado("Chocolate Amargo", mostrarSaboresDeHelado);
+agregarSaborDeHelado("Sambayon", mostrarSaboresDeHelado);
+agregarSaborDeHelado("Pistacho", mostrarSaboresDeHelado);
+agregarSaborDeHelado("Almendrado", mostrarSaboresDeHelado);
 
 // PRUEBA CALLBACK HELL
 
