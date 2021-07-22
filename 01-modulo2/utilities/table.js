@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+const colors = require("colors");
+
 //Retorna una tabla de multiplicacion con una base y un limite dados.
 
 const createTableByBase = (result, base, limit = 10) => {
