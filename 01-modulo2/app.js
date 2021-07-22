@@ -1,19 +1,15 @@
 const fileSystem = require("./utilities/writeFile");
 const table = require("./utilities/table");
-const colors = require("colors");
 const argv = require("./config/yargs");
-let result = "";
+let resultWithoutLayout = "";
+let resultWithLayout = "";
 const { base, top, list } = argv.argv;
 
-result = table.createTableByBase(result, base, top);
+resultWithoutLayout = table.createTableByBaseWithoutLayout(resultWithoutLayout, base, top);
+resultWithLayout = table.createTableByBase(resultWithLayout, base, top);
 
 if (list) {
-  console.log(
-    "|||||||||| ".red +
-      `TABLA DEL ${base} HASTA EL NUMERO ${top}`.rainbow +
-      " ||||||||||".red
-  );
-  console.log("\n" + result.america.bold);
+  console.log(resultWithLayout);
 }
 
 const fileName = `tabla${base}.txt`;
@@ -21,7 +17,7 @@ const fileName = `tabla${base}.txt`;
 try {
   // Ejecuto promesa para guardar archivo y caputuro posibles errores
   fileSystem
-    .writeFile(fileName, result)
+    .writeFile(fileName, resultWithoutLayout)
     .then((successMessage) => console.log(`Completed. ${successMessage}`))
     .catch((reason) => console.log(reason));
 } catch (err) {
