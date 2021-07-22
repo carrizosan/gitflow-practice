@@ -7,8 +7,18 @@ const createTableByBase = (result, base, limit = 10) => {
 
   if (limit < 1) throw Error("Limit parameter is not valid.");
 
+  result =
+    "|||||||| ".red +
+    `TABLA DEL ${base} HASTA EL NUMERO ${limit}`.rainbow +
+    " |||||||| \n\n".red;
+
   for (let i = 1; i <= limit; i++) {
-    result += `${base} x ${i} = ${base * i} \n`;
+    result +=
+      `${base}`.random +
+      " x ".green +
+      `${i}`.random +
+      " = ".green +
+      `${base * i} \n`.random;
   }
 
   return result;
