@@ -5,7 +5,11 @@ let resultWithoutLayout = "";
 let resultWithLayout = "";
 const { base, top, list } = argv.argv;
 
-resultWithoutLayout = table.createTableByBaseWithoutLayout(resultWithoutLayout, base, top);
+resultWithoutLayout = table.createTableByBaseWithoutLayout(
+  resultWithoutLayout,
+  base,
+  top
+);
 resultWithLayout = table.createTableByBase(resultWithLayout, base, top);
 
 if (list) {

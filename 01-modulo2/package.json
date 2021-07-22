@@ -21,6 +21,7 @@
     "yargs": "^17.0.1"
   },
   "devDependencies": {
+    "eslint": "^7.31.0",
     "nodemon": "^2.0.12"
   }
 }
