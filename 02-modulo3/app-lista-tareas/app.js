@@ -6,6 +6,7 @@ console.clear();
 
 const main = () => {
   messages.showMenu();
+  //messages.pause();
 };
 
 main();
