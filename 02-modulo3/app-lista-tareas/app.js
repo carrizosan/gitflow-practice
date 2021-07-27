@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const colors = require("colors");
-const messages = require("./helpers/messages");
+// const messages = require("./helpers/messages");
+const inquirer = require("./helpers/inquirer");
 
 console.clear();
 
@@ -9,15 +10,14 @@ const main = async () => {
 
   do {
     try {
-      selectedOption = await messages.showMenu();
-      console.log(`Opción seleccionada: ${selectedOption}`);
+      selectedOption = await inquirer.showMenu();
     } catch (error) {
       console.log(error);
     } finally {
-      await messages.pause();
+      await inquirer.pause();
       console.clear();
     }
-  } while (selectedOption !== "0");
+  } while (selectedOption.mainMenu !== "0");
 };
 
 main();
