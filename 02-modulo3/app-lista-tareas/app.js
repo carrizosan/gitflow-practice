@@ -4,9 +4,20 @@ const messages = require("./helpers/messages");
 
 console.clear();
 
-const main = () => {
-  messages.showMenu();
-  //messages.pause();
+const main = async () => {
+  let selectedOption = "";
+
+  do {
+    try {
+      selectedOption = await messages.showMenu();
+      console.log(`Opción seleccionada: ${selectedOption}`);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      await messages.pause();
+      console.clear();
+    }
+  } while (selectedOption !== "0");
 };
 
 main();
