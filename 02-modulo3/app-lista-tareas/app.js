@@ -1,32 +1,26 @@
-// eslint-disable-next-line no-unused-vars
-const colors = require("colors");
-// const inquirer = require("./helpers/inquirer");
-const { Task } = require("./models/task");
-const { Tasks } = require("./models/tasks");
+const { create, showAll, showMainMenu } = require("./helpers/menuOptions");
 
-console.clear();
-
+/**
+ * Main thread
+ * Calls the main menu until user exits
+ * Calls options methods depending on the selected one
+ */
 const main = async () => {
-  // let selectedOption = "";
-  let task = new Task("Primer tarea");
-  let tasks = new Tasks();
+  let selectedOption = "";
+  console.clear();
 
-  // Object.keys(tasks).push(task._id);
-  tasks._list[task.id] = task;
-
-  console.log(task);
-  console.log(tasks);
-
-  // do {
-  //   try {
-  //     selectedOption = await inquirer.showMenu();
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     await inquirer.pause();
-  //     console.clear();
-  //   }
-  // } while (selectedOption.mainMenu !== "0");
+  do {
+    console.clear();
+    selectedOption = await showMainMenu();
+    switch (selectedOption.mainMenu) {
+      case "1":
+        await create();
+        break;
+      case "2":
+        await showAll();
+        break;
+    }
+  } while (selectedOption.mainMenu !== "0");
 };
 
 main();
