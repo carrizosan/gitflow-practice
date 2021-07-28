@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-const colors = require("colors");
-
 const questions = {
   mainMenu: {
     type: "list",
@@ -46,9 +43,9 @@ const questions = {
   readInputText: {
     type: "input",
     name: "inputText",
-    message: "Ingrese la descripción: ".bold,
+    message: "Ingrese la descripción: ".magenta.bold,
     validate(value) {
-      return value.length === 0 ? "Debe ingresar un valor" : true;
+      return value.length === 0 ? "Debe ingresar un valor".red.bold : true;
     },
   },
 };

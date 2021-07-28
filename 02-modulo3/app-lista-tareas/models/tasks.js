@@ -10,6 +10,14 @@ class Tasks {
     return this.list;
   }
 
+  get arrList() {
+    const array = [];
+    Object.keys(this._list).forEach((key) => {
+      array.push(this._list[key]);
+    });
+    return array;
+  }
+
   // Setters
   set list(tasksList) {
     this._list = tasksList;

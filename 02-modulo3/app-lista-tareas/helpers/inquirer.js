@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-const colors = require("colors");
 const inquirer = require("inquirer");
 const { questions } = require("../constants/inquirerQuestions");
 

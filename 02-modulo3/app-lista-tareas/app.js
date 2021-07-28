@@ -1,3 +1,4 @@
+require("colors");
 const { create, showAll, showMainMenu } = require("./helpers/menuOptions");
 
 /**

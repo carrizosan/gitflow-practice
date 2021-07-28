@@ -1,6 +1,6 @@
 const printHeader = (headerText) => {
   console.log("<<<<<<<<<< :::::::::::::::::::::::::::::::: >>>>>>>>>>".green);
-  console.log(headerText.bold);
+  console.log(headerText.magenta.bold);
   console.log("<<<<<<<<<< :::::::::::::::::::::::::::::::: >>>>>>>>>>\n".green);
 };
 

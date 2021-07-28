@@ -27,7 +27,7 @@ const showMainMenu = async () => {
  */
 const showAll = async () => {
   printHeader("                   Listado de tareas");
-  console.log(tasksList._list);
+  console.log(tasksList.arrList);
   await inquirer.pause();
 };
 
