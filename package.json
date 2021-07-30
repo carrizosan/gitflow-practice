@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/carrizosan/gitflow-practice/issues"
   },
-  "homepage": "https://github.com/carrizosan/gitflow-practice#readme"
+  "homepage": "https://github.com/carrizosan/gitflow-practice#readme",
+  "dependencies": {}
 }

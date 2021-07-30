@@ -1,0 +1,14 @@
+{
+  "name": "modulo4",
+  "version": "1.0.0",
+  "description": "practica testing",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Santiago Carrizo",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
