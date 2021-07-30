@@ -1,7 +1,7 @@
 const { Tasks } = require("../models/tasks");
 const { printHeader } = require("../helpers/common");
 const inquirer = require("../helpers/inquirer");
-const { saveFile } = require("./saveFile");
+const { saveFile, readFile } = require("./saveFile");
 const tasksList = new Tasks();
 
 /**
@@ -10,7 +10,7 @@ const tasksList = new Tasks();
  */
 const showMainMenu = async () => {
   let selectedOption = "";
-  printHeader("                    Lista de tareas");
+  printHeader("                    Menu Principal");
   try {
     selectedOption = await inquirer.showMenu();
   } catch (error) {
@@ -27,7 +27,7 @@ const showMainMenu = async () => {
  */
 const showAll = async () => {
   printHeader("                   Listado de tareas");
-  console.log(tasksList.arrList);
+  console.log(readFile("./database/db.json"));
   await inquirer.pause();
 };
 

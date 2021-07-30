@@ -14,9 +14,21 @@ const saveFile = (path, fileName, result) => {
   );
 };
 
+const readFile = (fullPath) => {
+  if (fs.existsSync(fullPath)) {
+    const response = fs.readFileSync(fullPath, { encoding: "utf-8" });
+    return JSON.parse(response);
+  } else {
+    throw new Error("El path o archivo indicado no existe");
+  }
+};
+
 // Valida un nombre de archivo con algunos formatos validos.
 const validateFileName = (fileName) => {
   return /^\w+.(txt|png|pdf|jpg|json)$/.test(fileName);
 };
 
-exports.saveFile = saveFile;
+module.exports = {
+  saveFile,
+  readFile,
+};
