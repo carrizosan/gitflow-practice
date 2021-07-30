@@ -1,7 +1,7 @@
 const { Tasks } = require("../models/tasks");
 const { printHeader } = require("../helpers/common");
 const inquirer = require("../helpers/inquirer");
-
+const { saveFile } = require("./saveFile");
 const tasksList = new Tasks();
 
 /**
@@ -39,6 +39,8 @@ const create = async () => {
   const input = await inquirer.readInput();
   tasksList.addTask(input.inputText);
   console.log("\nTarea creada con éxito\n".bold);
+  saveFile("./database/", "db.json", JSON.stringify(tasksList.arrList));
+
   await inquirer.pause();
 };
 
