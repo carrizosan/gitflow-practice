@@ -50,4 +50,13 @@ const questions = {
   },
 };
 
-exports.questions = questions;
+const DB = {
+  FULLPATH: "./database/db.json",
+  PATH: "./database/",
+  FILE: "db.json",
+};
+
+module.exports = {
+  questions,
+  DB,
+};

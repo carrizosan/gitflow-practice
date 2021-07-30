@@ -1,13 +1,16 @@
+const { DB } = require("../constants/inquirerQuestions");
+const { readFile } = require("../helpers/saveFile");
 const { Task } = require("./task");
 
 class Tasks {
   constructor() {
-    this.list = {};
+    this._list = {};
+    this.getTasksFromArray();
   }
 
   // Getters
   get list() {
-    return this.list;
+    return this._list;
   }
 
   get arrList() {
@@ -27,6 +30,28 @@ class Tasks {
   addTask(description) {
     const newTask = new Task(description);
     this._list[newTask.id] = newTask;
+  }
+
+  getTasksFromArray() {
+    const arrTasks = readFile(DB.FULLPATH);
+    arrTasks.forEach((task) => {
+      this._list[task._id] = task;
+    });
+  }
+
+  toString() {
+    let listOfTasks = "";
+    Object.keys(this._list).forEach((task, index) => {
+      listOfTasks +=
+        (index + 1).toString().magenta +
+        ". " +
+        this._list[task]._description.bold +
+        " - " +
+        (this._list[task]._completedDate ? "Completado".green : "Incompleto".red) +
+        "\n";
+    });
+
+    return listOfTasks;
   }
 }
 

@@ -1,7 +1,8 @@
 const { Tasks } = require("../models/tasks");
 const { printHeader } = require("../helpers/common");
 const inquirer = require("../helpers/inquirer");
-const { saveFile, readFile } = require("./saveFile");
+const { saveFile } = require("./saveFile");
+const { DB } = require("../constants/inquirerQuestions");
 const tasksList = new Tasks();
 
 /**
@@ -27,7 +28,9 @@ const showMainMenu = async () => {
  */
 const showAll = async () => {
   printHeader("                   Listado de tareas");
-  console.log(readFile("./database/db.json"));
+  // console.log("DB", readFile(DB.FULLPATH));
+  // console.log("LIST", tasksList._list);
+  console.log(tasksList.toString());
   await inquirer.pause();
 };
 
@@ -39,7 +42,7 @@ const create = async () => {
   const input = await inquirer.readInput();
   tasksList.addTask(input.inputText);
   console.log("\nTarea creada con éxito\n".bold);
-  saveFile("./database/", "db.json", JSON.stringify(tasksList.arrList));
+  saveFile(DB.PATH, DB.FILE, JSON.stringify(tasksList.arrList));
 
   await inquirer.pause();
 };

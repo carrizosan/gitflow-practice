@@ -8,7 +8,6 @@ const { create, showAll, showMainMenu } = require("./helpers/menuOptions");
  */
 const main = async () => {
   let selectedOption = "";
-  console.clear();
 
   do {
     console.clear();
