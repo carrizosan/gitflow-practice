@@ -24,17 +24,6 @@ const showMainMenu = async () => {
 };
 
 /**
- * Shows all the tasks
- */
-const showAll = async () => {
-  printHeader("                   Listado de tareas");
-  // console.log("DB", readFile(DB.FULLPATH));
-  // console.log("LIST", tasksList._list);
-  console.log(tasksList.toString());
-  await inquirer.pause();
-};
-
-/**
  * Creates a new task from user input
  */
 const create = async () => {
@@ -47,8 +36,24 @@ const create = async () => {
   await inquirer.pause();
 };
 
+/**
+ * Shows all the tasks
+ */
+const showAll = async () => {
+  printHeader("                   Listado de tareas");
+  console.log(tasksList.toString());
+  await inquirer.pause();
+};
+
+const showCompletedIncompletedTasks = async (completed) => {
+  printHeader(`                   Tareas ${completed ? "completas" : "pendientes"}`);
+  console.log(tasksList.completedInconpletedToString(completed));
+  await inquirer.pause();
+};
+
 module.exports = {
   showAll,
   create,
   showMainMenu,
+  showCompletedIncompletedTasks,
 };

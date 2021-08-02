@@ -53,6 +53,35 @@ class Tasks {
 
     return listOfTasks;
   }
+
+  completedInconpletedToString(completed) {
+    let listOfTasks = "";
+    Object.keys(this._list).forEach((task, index) => {
+      if (completed) {
+        if (this._list[task]._completedDate) {
+          listOfTasks +=
+            (index + 1).toString().magenta +
+            ". " +
+            this._list[task]._description.bold +
+            " - " +
+            (this._list[task]._completedDate ? "Completado".green : "Incompleto".red) +
+            "\n";
+        }
+      } else {
+        if (!this._list[task]._completedDate) {
+          listOfTasks +=
+            (index + 1).toString().magenta +
+            ". " +
+            this._list[task]._description.bold +
+            " - " +
+            (this._list[task]._completedDate ? "Completado".green : "Incompleto".red) +
+            "\n";
+        }
+      }
+    });
+
+    return listOfTasks;
+  }
 }
 
 exports.Tasks = Tasks;

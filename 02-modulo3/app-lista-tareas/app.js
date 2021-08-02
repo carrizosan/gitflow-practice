@@ -1,5 +1,5 @@
 require("colors");
-const { create, showAll, showMainMenu } = require("./helpers/menuOptions");
+const { create, showAll, showMainMenu, showCompletedIncompletedTasks } = require("./helpers/menuOptions");
 
 /**
  * Main thread
@@ -18,6 +18,12 @@ const main = async () => {
         break;
       case "2":
         await showAll();
+        break;
+      case "3":
+        await showCompletedIncompletedTasks(true);
+        break;
+      case "4":
+        await showCompletedIncompletedTasks(false);
         break;
     }
   } while (selectedOption.mainMenu !== "0");
