@@ -45,6 +45,10 @@ const showAll = async () => {
   await inquirer.pause();
 };
 
+/**
+ * Show completed or incompleted tasks
+ * Completed parameter: Boolean
+ */
 const showCompletedIncompletedTasks = async (completed) => {
   printHeader(`                   Tareas ${completed ? "completas" : "pendientes"}`);
   console.log(tasksList.completedInconpletedToString(completed));
