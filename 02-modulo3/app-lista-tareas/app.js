@@ -1,5 +1,12 @@
 require("colors");
-const { create, showAll, showMainMenu, showCompletedIncompletedTasks } = require("./helpers/menuOptions");
+const {
+  create,
+  showAll,
+  showMainMenu,
+  showCompletedIncompletedTasks,
+  deleteTask,
+  exit,
+} = require("./helpers/menuOptions");
 
 /**
  * Main thread
@@ -8,6 +15,7 @@ const { create, showAll, showMainMenu, showCompletedIncompletedTasks } = require
  */
 const main = async () => {
   let selectedOption = "";
+  let exitSystem = false;
 
   do {
     console.clear();
@@ -25,8 +33,14 @@ const main = async () => {
       case "4":
         await showCompletedIncompletedTasks(false);
         break;
+      case "6":
+        await deleteTask();
+        break;
+      case "0":
+        exitSystem = await exit();
+        break;
     }
-  } while (selectedOption.mainMenu !== "0");
+  } while (!exitSystem.ok);
 };
 
 main();

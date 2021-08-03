@@ -48,6 +48,17 @@ const questions = {
       return value.length === 0 ? "Debe ingresar un valor".red.bold : true;
     },
   },
+  deleteTask: {
+    type: "list",
+    name: "deleteTask",
+    message: "Seleccione la tarea a eliminar".bold.magenta,
+    choices: [],
+  },
+  confirmation: {
+    type: "confirm",
+    name: "ok",
+    message: "",
+  },
 };
 
 const DB = {

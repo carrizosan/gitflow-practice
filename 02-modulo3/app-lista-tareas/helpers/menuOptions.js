@@ -1,8 +1,8 @@
 const { Tasks } = require("../models/tasks");
 const { printHeader } = require("../helpers/common");
-const inquirer = require("../helpers/inquirer");
 const { saveFile } = require("./saveFile");
 const { DB } = require("../constants/inquirerQuestions");
+const inquirer = require("../helpers/inquirer");
 const tasksList = new Tasks();
 
 /**
@@ -46,7 +46,7 @@ const showAll = async () => {
 };
 
 /**
- * Show completed or incompleted tasks
+ * Shows completed or incompleted tasks
  * Completed parameter: Boolean
  */
 const showCompletedIncompletedTasks = async (completed) => {
@@ -55,9 +55,44 @@ const showCompletedIncompletedTasks = async (completed) => {
   await inquirer.pause();
 };
 
+/**
+ * Delete a task.
+ * Shows all the available tasks, allows user to chose one.
+ * Shows a confirmation question.
+ */
+const deleteTask = async () => {
+  let confirm = {};
+  do {
+    console.clear();
+    printHeader("                     Eliminar tarea");
+    const result = await inquirer.tasksListToDelete(tasksList.arrList); // Ask user to choose a task
+
+    if (result.deleteTask === "0") return;
+
+    confirm = await inquirer.confirm("Esta seguro que desea eliminar la tarea?");
+
+    if (confirm.ok) {
+      tasksList.deleteTask(result.deleteTask); // Delete task from model
+      console.log("\nTarea eliminada con éxito\n".bold);
+      saveFile(DB.PATH, DB.FILE, JSON.stringify(tasksList.arrList)); // Delete task from database/file
+    }
+  } while (!confirm.ok);
+
+  await inquirer.pause();
+};
+
+/**
+ * Shows confirm question before exit system.
+ */
+const exit = async () => {
+  return await inquirer.confirm("Esta seguro que desea salir?");
+};
+
 module.exports = {
   showAll,
   create,
   showMainMenu,
   showCompletedIncompletedTasks,
+  deleteTask,
+  exit,
 };

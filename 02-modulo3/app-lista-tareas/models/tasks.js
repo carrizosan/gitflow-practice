@@ -39,6 +39,10 @@ class Tasks {
     });
   }
 
+  deleteTask(id) {
+    delete this._list[id];
+  }
+
   toString() {
     let listOfTasks = "";
     Object.keys(this._list).forEach((task, index) => {
