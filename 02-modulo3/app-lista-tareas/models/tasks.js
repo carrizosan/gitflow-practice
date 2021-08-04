@@ -43,6 +43,25 @@ class Tasks {
     delete this._list[id];
   }
 
+  toggleCompleteds(idArr) {
+    const arrTasks = readFile(DB.FULLPATH);
+
+    arrTasks.forEach((task) => {
+      const isCompleted = task._completedDate ? true : false; // The task is already completed
+      const isInArray = idArr.find((id) => id === task._id); // The task is in the completeds array (parameter)
+
+      if (isCompleted && !isInArray) {
+        task._completedDate = null;
+        this._list[task._id]._completedDate = null;
+      } else if (!isCompleted && isInArray) {
+        task._completedDate = new Date().toISOString();
+        this._list[task._id]._completedDate = new Date().toISOString();
+      }
+    });
+
+    return arrTasks;
+  }
+
   toString() {
     let listOfTasks = "";
     Object.keys(this._list).forEach((task, index) => {

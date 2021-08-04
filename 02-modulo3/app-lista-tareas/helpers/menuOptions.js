@@ -82,11 +82,13 @@ const deleteTask = async () => {
 };
 
 /**
- *
+ * Shows all the tasks with a checkbox to mark as complete / uncomplete
  */
 const completeTasks = async () => {
   const response = await inquirer.taskListToComplete(tasksList.arrList);
-  console.log(response);
+  const newTaskListArray = tasksList.toggleCompleteds(response.completeds);
+  saveFile(DB.PATH, DB.FILE, JSON.stringify(newTaskListArray));
+  console.log("\nTareas completadas con éxito\n".bold);
   await inquirer.pause();
 };
 
