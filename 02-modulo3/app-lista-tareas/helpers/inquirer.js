@@ -34,15 +34,34 @@ const tasksListToDelete = async (taskList) => {
       name: `${(index + 1).toString().magenta}. ${task._description}`,
     });
   });
-
   questions.deleteTask.choices.unshift({ value: "0", name: "0".green + ". Cancelar" });
 
   return await inquirer.prompt(questions.deleteTask);
 };
 
+/**
+ * Shows confirmation question, with the message as parameter.
+ */
 const confirm = async (message) => {
   questions.confirmation.message = message;
   return await inquirer.prompt(questions.confirmation);
+};
+
+/**
+ * Shows all the tasks and select multiple options to complete or revert (change to pending)
+ */
+const taskListToComplete = async (taskList) => {
+  questions.completeTasks.choices = [];
+
+  taskList.forEach((task, index) => {
+    questions.completeTasks.choices.push({
+      value: task._id,
+      name: `${(index + 1).toString().magenta}. ${task._description}`,
+      checked: task._completedDate, // Pending tasks are null/falsy expressions
+    });
+  });
+
+  return await inquirer.prompt(questions.completeTasks);
 };
 
 module.exports = {
@@ -51,4 +70,5 @@ module.exports = {
   readInput,
   tasksListToDelete,
   confirm,
+  taskListToComplete,
 };

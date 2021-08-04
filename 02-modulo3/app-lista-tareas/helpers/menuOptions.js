@@ -82,6 +82,15 @@ const deleteTask = async () => {
 };
 
 /**
+ *
+ */
+const completeTasks = async () => {
+  const response = await inquirer.taskListToComplete(tasksList.arrList);
+  console.log(response);
+  await inquirer.pause();
+};
+
+/**
  * Shows confirm question before exit system.
  */
 const exit = async () => {
@@ -94,5 +103,6 @@ module.exports = {
   showMainMenu,
   showCompletedIncompletedTasks,
   deleteTask,
+  completeTasks,
   exit,
 };

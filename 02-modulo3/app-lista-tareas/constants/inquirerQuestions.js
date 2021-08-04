@@ -59,6 +59,12 @@ const questions = {
     name: "ok",
     message: "",
   },
+  completeTasks: {
+    type: "checkbox",
+    name: "completeds",
+    message: "Selecciones",
+    choices: [],
+  },
 };
 
 const DB = {

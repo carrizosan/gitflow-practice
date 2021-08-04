@@ -5,6 +5,7 @@ const {
   showMainMenu,
   showCompletedIncompletedTasks,
   deleteTask,
+  completeTasks,
   exit,
 } = require("./helpers/menuOptions");
 
@@ -32,6 +33,9 @@ const main = async () => {
         break;
       case "4":
         await showCompletedIncompletedTasks(false);
+        break;
+      case "5":
+        await completeTasks();
         break;
       case "6":
         await deleteTask();
